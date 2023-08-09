@@ -6,7 +6,8 @@
         .container
         {
             width: 329px;
-            background-color: rgb(166, 177, 173);
+            height:500px;
+            background-color: rgb(86, 94, 91);
             margin-left: auto;
             margin-right: auto;
             border-radius: 15px;
@@ -21,6 +22,7 @@
             margin-top: 30px;
             border-radius: 5px;
             background-color: aliceblue;
+            font-size: 50px;
         }
         .button-row
         {
@@ -35,7 +37,7 @@
             border-radius: 10px;
             margin-top: 7px;
             cursor: pointer;
-            margin-bottom: 20px;
+            margin-bottom: 5px;
         }
         .button-cal:hover
         {
@@ -75,40 +77,69 @@
 <body>
     <div class="container">
         <p class="brand-name ">ICP</p>
-        <input type="text" class="input-box">
+        <input type="text" id="input"class="input-box">
         <div class="small-screen-container">
             <div class="small-screen"></div>
             <div class="small-screen"></div>
             <div class="small-screen"></div>
         </div>
         <div class="button-row">
-            <button class="button-cal">1</button>
-            <button class="button-cal">2</button>
-            <button class="button-cal">3</button>
-            <button class="button-cal special-button">+</button>
+            <button class="button-cal" onclick="handlekeyPress('(')">(</button>
+            <button class="button-cal "onclick="handlekeyPress(')')">)</button>
+            <button class="button-cal"onclick="handlekeyPress('log')">log</button>
+            <button class="button-cal special-button"onclick="clearscreen()">Clr</button>
 
         </div>
         <div class="button-row">
-            <button class="button-cal">4</button>
-            <button class="button-cal">5</button>
-            <button class="button-cal">6</button>
-            <button class="button-cal special-button">-</button>
+            <button class="button-cal" onclick="handlekeyPress('7')">7</button>
+            <button class="button-cal "onclick="handlekeyPress('8')">8</button>
+            <button class="button-cal"onclick="handlekeyPress('9')">9</button>
+            <button class="button-cal special-button"onclick="handlekeyPress('+')">+</button>
 
         </div>
         <div class="button-row">
-            <button class="button-cal">7</button>
-            <button class="button-cal">8</button>
-            <button class="button-cal">9</button>
-            <button class="button-cal special-button">x</button>
+            <button class="button-cal"onclick="handlekeyPress('6')">6</button>
+            <button class="button-cal"onclick="handlekeyPress('5')">5</button>
+            <button class="button-cal"onclick="handlekeyPress('4')">4</button>
+            <button class="button-cal special-button"onclick="handlekeyPress('-')">-</button>
 
         </div>
         <div class="button-row">
-            <button class="button-cal">0</button>
-            <button class="button-cal special-button">/</button>
-            <button class="button-cal special-button">.</button>
-            <button class="button-cal special-button">=</button>
+            <button class="button-cal"onclick="handlekeyPress('3')">3</button>
+            <button class="button-cal"onclick="handlekeyPress('2')">2</button>
+            <button class="button-cal"onclick="handlekeyPress('1')">1</button>
+            <button class="button-cal special-button"onclick="handlekeyPress('*')">x</button>
+        </div>
+        
+        <div class="button-row">
+            <button class="button-cal"onclick="handlekeyPress('0')">0</button>
+            <button class="button-cal special-button"onclick="handlekeyPress('/')">/</button>
+            <button class="button-cal special-button"onclick="handlekeyPress('.')">.</button>
+            <button class="button-cal special-button"onclick="handlekeyPress('=')">=</button>
 
         </div>
+        
     </div>
+    
+    <script>
+        function handlekeyPress(key)
+        {
+            const inputscreen = document.getElementById('input');
+            if(key!='=')
+            {
+            inputscreen.value +=key;
+            }
+            else
+            {
+            const result = eval(inputscreen.value);
+            inputscreen.value = result;
+            }
+        }
+        function clearscreen()
+        {
+            const inputscreen = document.getElementById('input');
+            inputscreen.value=''
+        }
+    </script>
 </body>
 </html>
